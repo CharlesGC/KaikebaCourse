@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <p>{{name}}</p>
+        <p v-text='name'></p>
+        <p>{{old}}</p>
+        <p>
+            {{doubleAge}}
+        </p>
+        <input type="text" v-model='name'>
+        <button @click='changeName'>修改姓名</button>
+        <div v-html='name'></div>
+    </div>
+
+    
+    <script src="./compile.js"></script>
+    <script src="./my-vue.js"></script>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                name: 'i am charles',
+                old: 27,
+                doubleAge: 54,
+            },
+            created () {
+                console.log('invoke');
+                setTimeout(() => {
+                    this.name = 'i am guochao'
+                }, 1500)
+            },
+            methods: {
+                changeName() {
+                    console.log('111');
+                    
+                    this.name = 'i am kmm'
+                    this.old = 17
+                }
+            }
+        });
+    </script>
+</body>
+</html>
